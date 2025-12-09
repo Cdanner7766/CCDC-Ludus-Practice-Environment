@@ -1,0 +1,9 @@
+---
+# Skeleton role for FILE01 (Windows file server)
+
+- name: Check WinRM connectivity
+  win_ping:
+
+- name: Placeholder - configure SMB shares
+  debug:
+    msg: "Create and secure SMB shares on {{ inventory_hostname }} here."
