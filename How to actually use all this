@@ -1,0 +1,8 @@
+# Tell Ludus to use your new config
+ludus range config set -f config-ccdc-blue.yml
+
+# Deploy the range (builds all VMs from templates)
+ludus range deploy
+
+# After deployment finishes, run Ansible to configure services
+ansible-playbook -i inventory-ccdc-blue.ini site.yml
