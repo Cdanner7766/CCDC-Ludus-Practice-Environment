@@ -1,0 +1,9 @@
+---
+# Skeleton role for WS01 / WS02 (Windows workstations)
+
+- name: Check WinRM connectivity
+  win_ping:
+
+- name: Placeholder - join workstation to domain, lock down config
+  debug:
+    msg: "Join {{ inventory_hostname }} to BLUE.LAB and apply hardening GPOs here."
