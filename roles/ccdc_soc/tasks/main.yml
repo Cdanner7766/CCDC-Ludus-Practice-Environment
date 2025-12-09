@@ -1,0 +1,16 @@
+---
+# Skeleton role for SOC01 (monitoring / log server)
+# You can turn this into Zabbix, Wazuh, syslog-ng, etc.
+
+- name: Ensure apt cache is up to date
+  ansible.builtin.apt:
+    update_cache: yes
+  become: yes
+
+- name: Install basic log tools (placeholder)
+  ansible.builtin.apt:
+    name:
+      - rsyslog
+      - tcpdump
+    state: present
+  become: yes
