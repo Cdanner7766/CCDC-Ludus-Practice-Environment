@@ -1,0 +1,30 @@
+---
+# Skeleton role for MAIL01 (Ubuntu Postfix + Dovecot)
+
+- name: Ensure apt cache is up to date
+  ansible.builtin.apt:
+    update_cache: yes
+  become: yes
+
+- name: Install Postfix and Dovecot
+  ansible.builtin.apt:
+    name:
+      - postfix
+      - dovecot-imapd
+      - dovecot-pop3d
+    state: present
+  become: yes
+
+- name: Enable and start Postfix
+  ansible.builtin.service:
+    name: postfix
+    enabled: yes
+    state: started
+  become: yes
+
+- name: Enable and start Dovecot
+  ansible.builtin.service:
+    name: dovecot
+    enabled: yes
+    state: started
+  become: yes
