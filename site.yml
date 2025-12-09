@@ -1,0 +1,40 @@
+---
+- hosts: dc01
+  gather_facts: no
+  roles:
+    - ccdc_dc2019
+
+- hosts: file01
+  gather_facts: no
+  roles:
+    - ccdc_fileserver
+
+- hosts: web01
+  gather_facts: yes
+  roles:
+    - ccdc_web
+
+- hosts: db01
+  gather_facts: yes
+  roles:
+    - ccdc_db
+
+- hosts: mail01
+  gather_facts: yes
+  roles:
+    - ccdc_mail
+
+- hosts: soc01
+  gather_facts: yes
+  roles:
+    - ccdc_soc
+
+- hosts: ws01:ws02
+  gather_facts: no
+  roles:
+    - ccdc_workstation
+
+- hosts: kali01
+  gather_facts: yes
+  roles:
+    - ccdc_kali_attacker
