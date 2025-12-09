@@ -1,0 +1,15 @@
+---
+# Skeleton role for KALI01 (attacker box)
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+  become: yes
+
+- name: Install common assessment tools (placeholder)
+  ansible.builtin.apt:
+    name:
+      - nmap
+      - tcpdump
+    state: present
+  become: yes
