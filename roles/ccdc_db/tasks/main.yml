@@ -1,0 +1,20 @@
+---
+# Skeleton role for DB01 (Ubuntu MySQL/MariaDB server)
+
+- name: Ensure apt cache is up to date
+  ansible.builtin.apt:
+    update_cache: yes
+  become: yes
+
+- name: Install MariaDB server
+  ansible.builtin.apt:
+    name: mariadb-server
+    state: present
+  become: yes
+
+- name: Enable and start MariaDB
+  ansible.builtin.service:
+    name: mariadb
+    enabled: yes
+    state: started
+  become: yes
