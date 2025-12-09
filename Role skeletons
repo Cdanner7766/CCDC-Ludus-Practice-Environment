@@ -1,0 +1,20 @@
+Create this directory structure (from the folder where site.yml lives):
+
+mkdir -p roles/ccdc_dc2019/tasks
+mkdir -p roles/ccdc_fileserver/tasks
+mkdir -p roles/ccdc_web/tasks
+mkdir -p roles/ccdc_db/tasks
+mkdir -p roles/ccdc_mail/tasks
+mkdir -p roles/ccdc_soc/tasks
+mkdir -p roles/ccdc_workstation/tasks
+mkdir -p roles/ccdc_kali_attacker/tasks
+
+Then create the following tasks/main.yml files.
+roles/ccdc_dc2019/tasks/main.yml
+roles/ccdc_fileserver/tasks/main.yml
+roles/ccdc_web/tasks/main.yml
+roles/ccdc_db/tasks/main.yml
+roles/ccdc_mail/tasks/main.yml
+roles/ccdc_soc/tasks/main.yml
+roles/ccdc_workstation/tasks/main.yml
+roles/ccdc_kali_attacker/tasks/main.yml
