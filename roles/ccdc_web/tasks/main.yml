@@ -1,0 +1,23 @@
+---
+# Skeleton role for WEB01 (Ubuntu web server)
+
+- name: Ensure apt cache is up to date
+  ansible.builtin.apt:
+    update_cache: yes
+  become: yes
+
+- name: Install Apache and PHP
+  ansible.builtin.apt:
+    name:
+      - apache2
+      - php
+      - libapache2-mod-php
+    state: present
+  become: yes
+
+- name: Enable and start Apache
+  ansible.builtin.service:
+    name: apache2
+    enabled: yes
+    state: started
+  become: yes
