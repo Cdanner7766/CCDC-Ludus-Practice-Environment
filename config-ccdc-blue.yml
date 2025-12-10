@@ -87,7 +87,7 @@ ludus:
 
   - vm_name: "{{ range_id }}-ws01"
     hostname: "{{ range_id }}-ws01"
-    template: win10-21h1-x64-enterprise-template
+    template: win10-22h2-x64-enterprise-template
     vlan: 20
     ip_last_octet: 10
     ram_gb: 4
@@ -102,7 +102,7 @@ ludus:
 
   - vm_name: "{{ range_id }}-ws02"
     hostname: "{{ range_id }}-ws02"
-    template: win10-21h1-x64-enterprise-template
+    template: win10-22h2-x64-enterprise-template
     vlan: 20
     ip_last_octet: 11
     ram_gb: 4
