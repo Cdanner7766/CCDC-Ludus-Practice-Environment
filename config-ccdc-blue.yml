@@ -12,6 +12,7 @@ ludus:
       snapshot: false
       block_internet: false
     roles:
+      - ccdc_windows_base
       - ccdc_dc2019
 
   - vm_name: "{{ range_id }}-file01"
@@ -27,6 +28,7 @@ ludus:
       snapshot: false
       block_internet: false
     roles:
+      - ccdc_windows_base
       - ccdc_fileserver
 
   - vm_name: "{{ range_id }}-web01"
@@ -98,6 +100,7 @@ ludus:
       snapshot: false
       block_internet: false
     roles:
+      - ccdc_windows_base
       - ccdc_workstation
 
   - vm_name: "{{ range_id }}-ws02"
@@ -113,6 +116,7 @@ ludus:
       snapshot: false
       block_internet: false
     roles:
+      - ccdc_windows_base
       - ccdc_workstation
 
   - vm_name: "{{ range_id }}-kali01"
