@@ -2,11 +2,13 @@
 - hosts: dc01
   gather_facts: no
   roles:
+    - ccdc_windows_base
     - ccdc_dc2019
 
 - hosts: file01
   gather_facts: no
   roles:
+    - ccdc_windows_base
     - ccdc_fileserver
 
 - hosts: web01
@@ -32,6 +34,7 @@
 - hosts: ws01:ws02
   gather_facts: no
   roles:
+    - ccdc_windows_base
     - ccdc_workstation
 
 - hosts: kali01

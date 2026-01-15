@@ -1,0 +1,7 @@
+---
+- name: Ensure WinRM basic connectivity works
+  win_ping:
+
+- name: Set hostname
+  win_hostname:
+    name: "{{ inventory_hostname }}"

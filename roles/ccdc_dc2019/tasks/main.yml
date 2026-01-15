@@ -1,15 +1,9 @@
 ---
-# Skeleton role for DC01 (Windows Server 2019 domain controller)
-# TODO: extend with real AD / DNS config.
+# roles/ccdc_dc2019/tasks/main.yml
+# DC01 - Windows Server 2019 Domain Controller tasks
 
-- name: Ensure WinRM basic connectivity works
-  win_ping:
+- import_tasks: install_ad.yml
+- import_tasks: promote.yml
+- import_tasks: post.yml
+- import_tasks: scenario.yml
 
-- name: Set hostname (optional, template should already do this)
-  win_hostname:
-    name: "{{ inventory_hostname }}"
-
-# Placeholder for future domain creation / promotion tasks
-- name: Placeholder - promote to domain controller (to be implemented)
-  debug:
-    msg: "Promote {{ inventory_hostname }} to DC for BLUE.LAB here."

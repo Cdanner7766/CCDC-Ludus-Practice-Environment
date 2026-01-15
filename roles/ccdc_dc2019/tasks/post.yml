@@ -1,0 +1,9 @@
+---
+- name: Ensure AD-related services are set to start automatically
+  ansible.windows.win_service:
+    name: "{{ item }}"
+    start_mode: auto
+    state: started
+  loop:
+    - NTDS
+    - DNS
