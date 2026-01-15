@@ -1,14 +1,23 @@
 ---
-- name: Promote to DC and create new forest (first DC)
-  ansible.windows.win_domain:
-    dns_domain_name: "{{ ad_domain_name }}"
-    safe_mode_password: "{{ ad_dsrmpassword }}"
-  when: ad_create_forest | bool
+- name: Check if host is already a domain controller
+  ansible.windows.win_shell: |
+    $d = Get-WindowsFeature -Name AD-Domain-Services
+    $n = Get-Service -Name NTDS -ErrorAction SilentlyContinue
+    if ($d.Installed -and $n) { "is_dc" } else { "not_dc" }
+  register: dc_status
+  changed_when: false
 
-- name: Promote to additional DC (if you ever add DC02)
-  ansible.windows.win_domain_controller:
-    dns_domain_name: "{{ ad_domain_name }}"
-    domain_admin_user: "{{ ad_domain_admin_user }}"
-    domain_admin_password: "{{ ad_domain_admin_password }}"
-    safe_mode_password: "{{ ad_dsrmpassword }}"
-  when: not (ad_create_forest | bool)
+- name: Promote to Domain Controller and create forest (first DC)
+  ansible.windows.win_domain:
+    dns_domain_name: "{{ ad_dns_domain_name }}"
+    domain_netbios_name: "{{ ad_netbios_name }}"
+    safe_mode_password: "{{ ad_safe_mode_password }}"
+  register: promote_result
+  when:
+    - dc_status.stdout | trim == "not_dc"
+    - ad_create_forest | bool
+
+- name: Reboot after promotion if required
+  ansible.windows.win_reboot:
+    reboot_timeout: 3600
+  when: promote_result.reboot_required | default(false)

@@ -1,12 +1,8 @@
 ---
-- name: Install AD DS role
+- name: Install AD DS and DNS roles
   ansible.windows.win_feature:
-    name: AD-Domain-Services
-    include_management_tools: true
-    state: present
-
-- name: Install DNS role (common on a DC)
-  ansible.windows.win_feature:
-    name: DNS
+    name:
+      - AD-Domain-Services
+      - DNS
     include_management_tools: true
     state: present

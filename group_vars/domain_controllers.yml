@@ -1,0 +1,9 @@
+---
+ad_dns_domain_name: "blue.lab"
+ad_netbios_name: "BLUE"
+
+# DSRM password for the DC promotion
+ad_safe_mode_password: "ChangeMe-DSRM-Strong"
+
+# First DC creates the forest
+ad_create_forest: true
