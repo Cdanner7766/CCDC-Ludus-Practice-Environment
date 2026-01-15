@@ -1,0 +1,41 @@
+all:
+  vars:
+    # Change this per deployment: 3 -> 4 -> 5, etc.
+    range_number: 3
+
+    domain_name: "BLUE"
+    dns_server: "10.{{ range_number }}.10.10"
+    force_dns_server: "yes"
+
+  children:
+    windows:
+      vars:
+        ansible_connection: winrm
+        ansible_winrm_server_cert_validation: ignore
+        ansible_winrm_operation_timeout_sec: 400
+        ansible_winrm_read_timeout_sec: 500
+      hosts:
+        dc01:
+          ansible_host: "10.{{ range_number }}.10.10"
+        file01:
+          ansible_host: "10.{{ range_number }}.10.20"
+        ws01:
+          ansible_host: "10.{{ range_number }}.20.10"
+        ws02:
+          ansible_host: "10.{{ range_number }}.20.11"
+
+    linux:
+      vars:
+        ansible_connection: ssh
+        ansible_ssh_user: blueadmin
+      hosts:
+        web01:
+          ansible_host: "10.{{ range_number }}.10.30"
+        db01:
+          ansible_host: "10.{{ range_number }}.10.40"
+        mail01:
+          ansible_host: "10.{{ range_number }}.10.50"
+        soc01:
+          ansible_host: "10.{{ range_number }}.10.60"
+        kali01:
+          ansible_host: "10.{{ range_number }}.30.10"
