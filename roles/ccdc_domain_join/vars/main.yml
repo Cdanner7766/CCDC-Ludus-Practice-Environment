@@ -1,0 +1,4 @@
+---
+domain_name_fqdn: "blue.lab"
+domain_join_user: "BLUE\\Administrator"
+domain_join_password: "ChangeMe-DSRM-Strong"

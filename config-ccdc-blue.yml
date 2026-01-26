@@ -29,6 +29,7 @@ ludus:
       block_internet: false
     roles:
       - ccdc_windows_base
+      - ccdc_domain_join
       - ccdc_fileserver
 
   - vm_name: "{{ range_id }}-web01"
@@ -105,6 +106,7 @@ ludus:
       block_internet: false
     roles:
       - ccdc_windows_base
+      - ccdc_domain_join
       - ccdc_workstation
 
   - vm_name: "{{ range_id }}-ws02"
@@ -121,6 +123,7 @@ ludus:
       block_internet: false
     roles:
       - ccdc_windows_base
+      - ccdc_domain_join
       - ccdc_workstation
 
   - vm_name: "{{ range_id }}-kali01"

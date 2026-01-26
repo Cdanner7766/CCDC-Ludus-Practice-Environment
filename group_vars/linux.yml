@@ -1,4 +1,4 @@
 ---
 ansible_connection: ssh
-ansible_user: blueadmin
-
+# Temporary during rebuild-heavy testing:
+ansible_ssh_common_args: "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"

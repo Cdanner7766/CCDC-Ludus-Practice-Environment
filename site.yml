@@ -9,6 +9,7 @@
   gather_facts: no
   roles:
     - ccdc_windows_base
+    - ccdc_domain_join
     - ccdc_fileserver
 
 - hosts: web01
@@ -39,6 +40,7 @@
   gather_facts: no
   roles:
     - ccdc_windows_base
+    - ccdc_domain_join
     - ccdc_workstation
 
 - hosts: kali01
