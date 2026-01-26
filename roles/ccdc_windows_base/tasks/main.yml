@@ -1,13 +1,20 @@
 ---
+# roles/ccdc_windows_base/tasks/main.yml
+
 - name: Ensure WinRM basic connectivity works
   ansible.windows.win_ping:
 
 - name: Set hostname
   ansible.windows.win_hostname:
     name: "{{ inventory_hostname }}"
+  register: hostname_result
+
+- name: Reboot if hostname change requires it
+  ansible.windows.win_reboot:
+    reboot_timeout: 900
+  when: hostname_result.reboot_required | default(false)
 
 - name: Stamp build version
   ansible.windows.win_copy:
     dest: C:\ccdc_build.txt
     content: "{{ lookup('pipe', 'git rev-parse --short HEAD') }}\n"
-

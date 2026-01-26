@@ -1,4 +1,18 @@
 ---
+# roles/ccdc_dc2019/tasks/post.yml
+
+- name: Re-check AD after promotion and reboot
+  ansible.windows.win_shell: |
+    try {
+      Import-Module ActiveDirectory -ErrorAction Stop
+      $d = Get-ADDomain -Server localhost -ErrorAction Stop
+      "is_dc"
+    } catch {
+      "not_dc"
+    }
+  register: dc_status_after
+  changed_when: false
+
 - name: Ensure AD-related services are set to start automatically
   ansible.windows.win_service:
     name: "{{ item }}"
@@ -6,6 +20,11 @@
     state: started
   loop:
     - NTDS
+    - ADWS
     - DNS
-  when: dc_status.stdout | trim == "is_dc"
+  when: dc_status_after.stdout | trim == "is_dc"
 
+- name: Verify domain root
+  ansible.windows.win_shell: |
+    Get-ADDomain -Server localhost | Select DNSRoot
+  when: dc_status_after.stdout | trim == "is_dc"
