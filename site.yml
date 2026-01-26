@@ -14,21 +14,25 @@
 - hosts: web01
   gather_facts: yes
   roles:
+    - ccdc_linux_base
     - ccdc_web
 
 - hosts: db01
   gather_facts: yes
   roles:
+    - ccdc_linux_base
     - ccdc_db
 
 - hosts: mail01
   gather_facts: yes
   roles:
+    - ccdc_linux_base
     - ccdc_mail
 
 - hosts: soc01
   gather_facts: yes
   roles:
+    - ccdc_linux_base
     - ccdc_soc
 
 - hosts: ws01:ws02
@@ -40,4 +44,5 @@
 - hosts: kali01
   gather_facts: yes
   roles:
+    - ccdc_linux_base
     - ccdc_kali_attacker

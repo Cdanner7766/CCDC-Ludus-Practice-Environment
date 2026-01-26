@@ -1,0 +1,6 @@
+---
+- name: Stamp build version
+  become: true
+  copy:
+    dest: /etc/ccdc_build
+    content: "{{ lookup('pipe', 'git rev-parse --short HEAD') }}\n"

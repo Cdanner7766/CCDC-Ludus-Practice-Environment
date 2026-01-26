@@ -1,7 +1,13 @@
 ---
 - name: Ensure WinRM basic connectivity works
-  win_ping:
+  ansible.windows.win_ping:
 
 - name: Set hostname
-  win_hostname:
+  ansible.windows.win_hostname:
     name: "{{ inventory_hostname }}"
+
+- name: Stamp build version
+  ansible.windows.win_copy:
+    dest: C:\ccdc_build.txt
+    content: "{{ lookup('pipe', 'git rev-parse --short HEAD') }}\n"
+
