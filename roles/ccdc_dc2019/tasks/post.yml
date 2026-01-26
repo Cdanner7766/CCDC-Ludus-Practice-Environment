@@ -7,3 +7,5 @@
   loop:
     - NTDS
     - DNS
+  when: dc_status.stdout | trim == "is_dc"
+

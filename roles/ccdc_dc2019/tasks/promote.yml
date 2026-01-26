@@ -1,11 +1,15 @@
 ---
 - name: Check if host is already a domain controller
   ansible.windows.win_shell: |
-    $d = Get-WindowsFeature -Name AD-Domain-Services
-    $n = Get-Service -Name NTDS -ErrorAction SilentlyContinue
-    if ($d.Installed -and $n) { "is_dc" } else { "not_dc" }
+    try {
+      $null = Get-ADDomain -ErrorAction Stop
+      "is_dc"
+    } catch {
+      "not_dc"
+    }
   register: dc_status
   changed_when: false
+
 
 - name: Promote to Domain Controller and create forest (first DC)
   ansible.windows.win_domain:
