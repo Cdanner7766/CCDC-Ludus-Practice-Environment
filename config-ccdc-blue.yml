@@ -43,6 +43,7 @@ ludus:
       snapshot: false
       block_internet: false
     roles:
+      - ccdc_linux_base
       - ccdc_web
 
   - vm_name: "{{ range_id }}-db01"
@@ -57,6 +58,7 @@ ludus:
       snapshot: false
       block_internet: false
     roles:
+      - ccdc_linux_base
       - ccdc_db
 
   - vm_name: "{{ range_id }}-mail01"
@@ -71,6 +73,7 @@ ludus:
       snapshot: false
       block_internet: false
     roles:
+      - ccdc_linux_base
       - ccdc_mail
 
   - vm_name: "{{ range_id }}-soc01"
@@ -85,6 +88,7 @@ ludus:
       snapshot: false
       block_internet: false
     roles:
+      - ccdc_linux_base
       - ccdc_soc
 
   - vm_name: "{{ range_id }}-ws01"
@@ -131,4 +135,5 @@ ludus:
       snapshot: false
       block_internet: false
     roles:
+      - ccdc_linux_base
       - ccdc_kali_attacker

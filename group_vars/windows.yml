@@ -1,7 +1,7 @@
 ---
 ansible_connection: winrm
-ansible_user: ".\\localadmin"
-ansible_password: "ChangeMe!"
+ansible_user: ".\\localuser"
+ansible_password: "password"
 ansible_winrm_transport: ntlm
 ansible_winrm_server_cert_validation: ignore
 ansible_winrm_operation_timeout_sec: 400
